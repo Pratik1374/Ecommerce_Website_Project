@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto+Slab&display=swap');   /*google fonts*/
+
+*{                /*remove default styling*/
+  margin : 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* font-family: 'Playfair Display', serif;
+font-family: 'Roboto Slab', serif; */
+
+/* navbar designing */
+.navbar{
+  font-size: 18px;
+  font-family: 'Roboto Slab', serif;
+  line-height: 40px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  --webkit-box-shadow : rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+
+.nav-link{
+  font-weight: 300 !important;
+}
+
+.active{
+  border-bottom: 2px solid rgb(2, 197, 191);
+}
+
+.navbar-brand{
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  -webkit-text-fill-color: rgb(122, 4, 149);
+}
+
+/* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
