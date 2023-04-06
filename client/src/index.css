@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto+Slab&display=swap');   /*google fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto+Slab&display=swap"); /*google fonts*/
 
-*{                /*remove default styling*/
-  margin : 0;
+* {
+  /*remove default styling*/
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -10,30 +11,120 @@
 font-family: 'Roboto Slab', serif; */
 
 /* navbar designing */
-.navbar{
-  font-size: 18px;
-  font-family: 'Roboto Slab', serif;
-  line-height: 40px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  --webkit-box-shadow : rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+.navbar {
+  font-size: 1rem;
+  font-family: "Roboto Slab", serif;
+  line-height: 4vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  --webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   border-radius: 20px;
   margin-top: 5px;
 }
 
-.nav-link{
+.nav-link {
   font-weight: 300 !important;
 }
 
-.active{
+.active {
   border-bottom: 2px solid rgb(2, 197, 191);
 }
 
-.navbar-brand{
+.navbar-brand {
   font-weight: 700;
   letter-spacing: 2px;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 40px;
   -webkit-text-fill-color: rgb(122, 4, 149);
 }
+
+/* footer design */
+.footer {
+  padding: 20px;
+}
+
+.footer a {
+  text-decoration: none;
+  padding: 10px;
+  color: aqua;
+}
+
+.footer a:hover{
+  color: rgb(77, 160, 248);
+  border-bottom: 1px solid blue;
+}
+
+/* page not found design*/
+.pnf {
+  display: flex;
+  min-height: 65vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pnf-title {
+  font-size: 100px;
+  font-weight: 700;
+}
+
+.pnf-heading {
+  font-weight: normal;
+  color: red;
+}
+
+.pnf-btn {
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: rgb(2, 180, 180);
+}
+.pnf-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* contact page */
+.contact-container{
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+.contactus{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+/* registration page */
+.myform{
+  display: flex;
+  min-height: 70vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor:pointer;
+  line-height:12px;
+}
+.myform form input{
+  color: blue;
+}
+
+.r1{
+  padding: 20px;
+  border: rgb(1, 243, 223) 0.125em solid;
+  background-color: #000000e1;
+  color: rgb(7, 251, 19);
+  box-shadow: inset 0 0 1em 0 rgb(1, 243, 223), 0 0 1em 0 rgb(1, 243, 223);
+}
+
+
+
 
 /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
