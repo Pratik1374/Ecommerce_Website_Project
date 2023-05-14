@@ -3,6 +3,8 @@ import Layout from "./../components/Layout/Layout";
 import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
@@ -35,38 +37,54 @@ const CartPage = () => {
       console.log(error);
     }
   };
+
+  //handle payment
+  const handlePayment = async() => {
+    try {
+      document.getElementById("paymentButton").innerHTML = "Processing...";
+      const {data} = await axios.post("/api/v1/auth/place-order",{cart});
+      if(data?.success)
+      {
+        document.getElementById("paymentButton").innerHTML = "Make Payment";
+        localStorage.removeItem("cart");
+        setCart([]);
+        navigate("/dashboard/user/orders");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <Layout>
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center bg-light p-2 mb-1">
-              {`Hello ${auth?.token && auth?.user?.name}`}
+            <h1 className="text-center p-2 mb-1" style={{color:"#d904d5"}}>
+              {`Hello @${auth?.token && auth?.user?.name}`}
             </h1>
-            <h4 className="text-center">
+            <h4 className="text-center" style={{color:"#c29b2f"}}>
               {cart?.length
                 ? `You Have ${cart.length} items in your cart ${
                     auth?.token ? "" : "please login to checkout"
                   }`
-                : " Your Cart Is Empty"}
+                : <h4 style={{color:"red"}}>Your Cart Is Empty</h4>}
             </h4>
           </div>
         </div>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-6">
             {cart?.map((p) => (
               <div className="row mb-2 p-3 card flex-row">
-                <div className="col-md-4">
+                <div className="col-md-3" style={{margin:"10px"}}>
                   <img
                     src={`/api/v1/product/product-image/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
-                    width="100px"
-                    height={"100px"}
                   />
                 </div>
                 <div className="col-md-8">
-                  <p>{p.name}</p>
+                  <p className="fw-bold">{p.name}</p>
                   <p>{p.description.substring(0, 30)}</p>
                   <p>Price : {p.price}</p>
                   <button
@@ -79,11 +97,11 @@ const CartPage = () => {
               </div>
             ))}
           </div>
-          <div className="col-md-4 text-center">
-            <h2>Cart Summary</h2>
+          <div className="col-md-6 text-center">
+            <h2 style={{color:"blue"}}>Cart Summary</h2>
             <p>Total | Checkout | Payment</p>
             <hr />
-            <h4>Total : {totalPrice()} </h4>
+            <h4 >Total : <span style={{color:"green"}}>{totalPrice()}</span></h4>
             {auth?.user?.address ? (
               <>
                 <div className="mb-3">
@@ -95,17 +113,28 @@ const CartPage = () => {
                   >
                     Update Address
                   </button>
+                  {cart?.length > 0 ? (
+                    <div className="mt-3">
+                    <button className="btn btn-success" id="paymentButton" onClick={handlePayment}>Make Payment</button>
+                    </div>
+                  ):(
+                    <></>
+                  )}
+                  
                 </div>
               </>
             ) : (
               <div className="mb-3">
                 {auth?.token ? (
+                  <div>
                   <button
                     className="btn btn-outline-warning"
                     onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Address
                   </button>
+                  <button className="btn btn-success" id="paymentButton" onClick={handlePayment}>Make Payment</button>
+                  </div>
                 ) : (
                   <button
                     className="btn btn-outline-warning"

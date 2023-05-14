@@ -1,107 +1,118 @@
 import React, { useState } from "react";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import Layout from "../../components/Layout/Layout";
-import axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import Header from "../../components/Layout/Header";
 
 const Register = () => {
-  const [name,setName] = useState("");
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
-  const [phone,setPhone] = useState("");
-  const [address,setAddress] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async(e)  =>{
-    e.preventDefault();   //By default in js on a button click page is refreshed so we want to stop it with this
+  const handleSubmit = async (e) => {
+    e.preventDefault(); //By default in js on a button click page is refreshed so we want to stop it with this
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`,{name,email,password,phone,address});
-      console.log(res)
-      if(res && res.data.success)
-      {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/auth/register`,
+        { name, email, password, phone, address }
+      );
+      console.log(res);
+      if (res && res.data.success) {
         toast.success(res.data.message);
-        navigate('/login');
-      }
-      else
-      {
+        navigate("/login");
+      } else {
         toast.error(res.data.message);
       }
     } catch (error) {
       console.log(error);
       toast.error("!!Something went wrong");
     }
-  }
+  };
 
   return (
-    <Layout title={"Register - myEcom"}>
-      <div className="myform">
-        <div className="r1">
-        <h2 className="text-center" style={{fontWeight:"bold"}}>REGISTER</h2>
-        <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-            <input
-              type="text"
-              value={name}
-              onChange={(e)=> setName(e.target.value)}
-              className="form-control"
-              id="exampleInputName"
-              placeholder="Enter name"
-              required
-            />
+    <>
+      <Header title="Register - myEcom"/>
+      <div className="container1">
+        <div className="screen">
+          <div className="screen__content">
+            <form className="registerForm"  onClick={handleSubmit}>
+              <div className="register__field">
+                <i className="login__icon fas fa-user" />
+                <input
+                  type="text"
+                  className="login__input"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="register__field">
+                <i className="login__icon fas fa-user" />
+                <input
+                  type="email"
+                  className="login__input"
+                  placeholder="User name / Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="register__field">
+                <i className="login__icon fas fa-lock" />
+                <input
+                  type="password"
+                  className="login__input"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="register__field">
+                <i className="login__icon fas fa-user" />
+                <input
+                  type="text"
+                  className="login__input"
+                  placeholder="Phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="register__field">
+                <i className="login__icon fas fa-user" />
+                <input
+                  type="text"
+                  className="login__input"
+                  placeholder="Address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
+                />
+              </div>
+              <button className="button login__submit">
+                <span className="button__text">Register</span>
+                <i className="button__icon fas fa-chevron-right" />
+              </button>
+            </form>
+            <div className="social-login">
+              <Link to="/login" style={{ color: "cyan" }}>Log In</Link>
+            </div>
           </div>
-          <div className="mb-3">
-            <input
-              type="email"
-              value={email}
-              onChange={(e)=> setEmail(e.target.value)}
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter email"
-              required
-            />
+          <div className="screen__background">
+            <span className="screen__background__shape screen__background__shape4" />
+            <span className="screen__background__shape screen__background__shape3" />
+            <span className="screen__background__shape screen__background__shape2" />
+            <span className="screen__background__shape screen__background__shape1" />
           </div>
-          <div className="mb-3">
-            <input
-              type="password"
-              value={password}
-              onChange={(e)=> setPassword(e.target.value)}
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Enter password"
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              value={phone}
-              onChange={(e)=> setPhone(e.target.value)}
-              className="form-control"
-              id="exampleInputPhone"
-              placeholder="Enter contact number"
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              value={address}
-              onChange={(e)=> setAddress(e.target.value)}
-              className="form-control"
-              id="exampleInputAddress"
-              placeholder="Enter address"
-              required
-            />
-          </div>
-          <div style={{display:"flex",justifyContent:"center"}}>
-          <button type="submit"  className="btn" style={{backgroundColor:"rgb(0, 255, 4)"}}>
-            Submit
-          </button>
-          </div>
-        </form>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

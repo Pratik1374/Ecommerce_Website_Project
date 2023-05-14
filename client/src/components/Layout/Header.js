@@ -22,12 +22,12 @@ const Header = () => {
     });
     localStorage.removeItem("auth");
     localStorage.removeItem("cart");
-    setCart(0);
+    setCart([]);
     toast.success("Loged out successfully");
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -40,12 +40,14 @@ const Header = () => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <Link to="/" className="navbar-brand">
+          <Link to="/" className="navbar-brand" style={{marginLeft:"20px"}}>
             <HiShoppingCart /> myEcom
           </Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-1">
+              <div style={{marginRight:"20px"}}>
               <SearchInput />
+              </div>
               <li className="nav-item">
                 <NavLink to="/" className="nav-link">
                   Home
@@ -60,9 +62,6 @@ const Header = () => {
                   Categories
                 </Link>
                 <ul className="dropdown-menu">
-                  <Link className="dropdown-item" to={"/categories"}>
-                    All Categories
-                  </Link>
                   {categories?.map((c) => (
                     <li>
                       <Link className="dropdown-item" to={`/category/${c.slug}`}>

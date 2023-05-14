@@ -30,7 +30,7 @@ const Products = () => {
           <AdminMenu />
         </div>
         <div className="col-md-9">
-        <h1 className="text-center">All Products List</h1>
+        <h3 className="text-center" style={{color:"darkblue"}}>All Products List</h3>
           <div className="d-flex flex-wrap">
             {products.map((p) => (
               <Link
@@ -38,15 +38,15 @@ const Products = () => {
                 to={`/dashboard/admin/product/${p.slug}`}
                 className="product-link"
               >
-                <div className="card m-2 p-4" style={{ width: "18rem" }}>
+                <div className="card m-2 p-2" style={{ width: "15rem" }}>
                   <img
                     src={`/api/v1/product/product-image/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
-                    style={{maxHeight:"200px"}}
+                    style={{height:"200px",width:"200px"}}
                   />
                   <div className="card-body">
-                    <h5 className="card-title">{p.name}</h5>
+                    <h6 className="card-title" style={{color:"blueviolet"}}>{p.name}</h6>
                     <p className="card-text">{p.description.substring(0,30)}</p>
                   </div>
                 </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import UserMenu from "../../components/Layout/UserMenu";
 import { useAuth } from "../../context/auth";
+import profileIcon from "../../images/profile_icon.jpg"
 
 const Dashboard = () => {
   const [auth] = useAuth();
@@ -12,12 +13,15 @@ const Dashboard = () => {
           <div className="col-md-3">
             <UserMenu />
           </div>
-          <div className="col-md-9">
-            <div className="d-flex p-2" style={{flexDirection:"column",border:"2px solid black"}}>
-              <h3>{auth?.user?.name}</h3>
-              <h3>{auth?.user?.email}</h3>
-              <h3>{auth?.user?.address}</h3>
-              <h3>{auth?.user?.phone}</h3>
+          <div className="col-md-7">
+            <div className="d-flex flex-wrap justify-content-center mt-4">
+            <img src={profileIcon} style={{height:"200px",width:"200px"}} alt="" />
+            <div className="d-flex flex-column p-2" >
+              <h5>Name : {auth?.user?.name}</h5>
+              <h5>Email : {auth?.user?.email}</h5>
+              <h5>Address : {auth?.user?.address}</h5>
+              <h5>Contact No : {auth?.user?.phone}</h5>
+            </div>
             </div>
           </div>
         </div>

@@ -5,30 +5,34 @@ const AdminMenu = () => {
     <>
       <div className="text-center">
         <div className="list-group m-2">
-          <h4>Admin Panel</h4>
+          <h4 className="fw-bold">Admin Panel</h4>
           <NavLink
+            style={{background:"lavender",margin:"10px",borderRadius:"20px"}}
             to="/dashboard/admin/create-category"
             className="list-group-item list-group-item-action"
           >
             Create Category
           </NavLink>
           <NavLink
+            style={{background:"lavender",margin:"10px",borderRadius:"20px"}}
             to="/dashboard/admin/create-product"
             className="list-group-item list-group-item-action"
           >
             Create Products
           </NavLink>
           <NavLink
+            style={{background:"lavender",margin:"10px",borderRadius:"20px"}}
             to="/dashboard/admin/products"
             className="list-group-item list-group-item-action"
           >
             All Products
           </NavLink>
           <NavLink
-            to="/dashboard/admin/users"
+          style={{background:"lavender",margin:"10px",borderRadius:"20px"}}
+            to="/dashboard/admin/orders"
             className="list-group-item list-group-item-action"
           >
-            Users
+            Orders
           </NavLink>
         </div>
       </div>
